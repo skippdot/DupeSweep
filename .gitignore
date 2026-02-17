@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+*.zip
+coverage/
+.DS_Store
+
+.bin_patch.sh
+dev/
+
+.assets_meta.json

@@ -1,0 +1,764 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="settingsTitle">DupeSweep - Settings</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+        line-height: 1.6;
+      }
+      .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .left-panel,
+      .right-panel {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+        text-align: center;
+        font-size: 24px;
+      }
+      .version {
+        color: #666;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      fieldset {
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      legend {
+        font-weight: bold;
+        color: #555;
+        padding: 0 10px;
+        font-size: 16px;
+      }
+      .setting-group {
+        margin-bottom: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .setting-header {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background: #f8f9fa;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .setting-header:hover {
+        background: #e9ecef;
+      }
+      .setting-header input[type='checkbox'] {
+        margin-right: 12px;
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+      .setting-header label {
+        cursor: pointer;
+        font-weight: 500;
+        color: #333;
+        font-size: 16px;
+        flex: 0.5;
+      }
+      .collapse-arrow {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+        font-size: 18px;
+        color: #666;
+      }
+      .collapse-arrow.expanded {
+        transform: rotate(180deg);
+      }
+      .setting-content {
+        padding: 20px;
+        background: white;
+        display: none;
+      }
+      .setting-content.expanded {
+        display: block;
+      }
+      .setting-description {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+      .setting-details {
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+      }
+      .setting-details h4 {
+        margin: 0 0 8px 0;
+        color: #555;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .setting-details ul {
+        margin: 5px 0;
+        padding-left: 20px;
+      }
+      .setting-details li {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 3px;
+      }
+      .save-section {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #eee;
+      }
+      button {
+        background: #4285f4;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: background-color 0.2s;
+      }
+      button:hover {
+        background: #3367d6;
+      }
+      button:active {
+        background: #2851a3;
+      }
+      .status-message {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        font-weight: 500;
+      }
+      .status-success {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .status-error {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .keyboard-shortcut {
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 12px;
+      }
+      .stats-section {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #28a745;
+      }
+      .stats-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      .stats-header h3 {
+        margin: 0;
+        color: #155724;
+        font-size: 18px;
+      }
+      .refresh-btn {
+        margin-left: auto;
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .refresh-btn:hover {
+        background: #218838;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+      .stat-item {
+        background: white;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+        text-align: center;
+      }
+      .stat-value {
+        font-size: 24px;
+        font-weight: bold;
+        color: #495057;
+        margin-bottom: 5px;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      .duplicates-list {
+        background: white;
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .duplicates-header {
+        padding: 10px 15px;
+        background: #e9ecef;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: bold;
+        font-size: 14px;
+        color: #495057;
+      }
+      .duplicate-item {
+        padding: 8px 15px;
+        border-bottom: 1px solid #f8f9fa;
+        font-size: 13px;
+        color: #6c757d;
+      }
+      .duplicate-item:last-child {
+        border-bottom: none;
+      }
+      .duplicate-count {
+        color: #dc3545;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      .domains-list {
+        background: white;
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+        margin-top: 15px;
+      }
+      .domains-header {
+        padding: 10px 15px;
+        background: #e3f2fd;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: bold;
+        font-size: 14px;
+        color: #1976d2;
+      }
+      .domain-item {
+        padding: 6px 15px;
+        border-bottom: 1px solid #f8f9fa;
+        font-size: 13px;
+        color: #6c757d;
+        display: flex;
+        justify-content: space-between;
+      }
+      .domain-item:last-child {
+        border-bottom: none;
+      }
+      .domain-count {
+        color: #1976d2;
+        font-weight: bold;
+      }
+      .footer-section {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-top: 3px solid #6c757d;
+        text-align: center;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+      }
+      .footer-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 15px;
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #495057;
+        transition: all 0.2s ease;
+        font-size: 14px;
+      }
+      .footer-link:hover {
+        background: #e9ecef;
+        border-color: #adb5bd;
+        text-decoration: none;
+        color: #212529;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .footer-link-icon {
+        font-size: 16px;
+      }
+      .footer-description {
+        color: #6c757d;
+        font-size: 13px;
+        margin-top: 15px;
+        line-height: 1.4;
+      }
+      .search-container {
+        margin-bottom: 15px;
+        position: relative;
+      }
+      .search-input {
+        width: 100%;
+        padding: 10px 40px 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+      .search-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+      }
+      .domain-group {
+        margin-bottom: 10px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .domain-header {
+        padding: 12px 15px;
+        background: #f8f9fa;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background-color 0.2s;
+      }
+      .domain-header:hover {
+        background: #e9ecef;
+      }
+      .domain-tabs {
+        display: none;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .domain-tabs.expanded {
+        display: block;
+      }
+      .tab-item {
+        padding: 8px 15px;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 13px;
+      }
+      .tab-item:hover {
+        background: #f0f8ff;
+      }
+      .tab-item:last-child {
+        border-bottom: none;
+      }
+      .tab-title {
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 2px;
+      }
+      .tab-url {
+        color: #666;
+        font-size: 12px;
+        word-break: break-all;
+      }
+      .no-results {
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Panel: Statistics -->
+      <div class="left-panel">
+        <h2 data-i18n="currentTabStatistics">📊 Current Tab Statistics</h2>
+        <button
+          type="button"
+          class="refresh-btn"
+          id="refreshStats"
+          style="float: right; margin-top: -40px"
+          data-i18n="refresh"
+        >
+          🔄 Refresh
+        </button>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value" id="totalTabs">-</div>
+            <div class="stat-label" data-i18n="totalTabs">Total Tabs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="uniqueUrls">-</div>
+            <div class="stat-label" data-i18n="uniqueUrls">Unique URLs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="duplicateTabs">-</div>
+            <div class="stat-label" data-i18n="duplicateTabs">Duplicate Tabs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value" id="suspendedTabs">-</div>
+            <div class="stat-label" data-i18n="suspendedTabs">Suspended Tabs</div>
+          </div>
+        </div>
+
+        <div class="duplicates-list" id="duplicatesList" style="display: none">
+          <div class="duplicates-header">🔍 Duplicate URLs Found</div>
+          <div id="duplicatesContent"></div>
+        </div>
+
+        <div class="domains-list" id="domainsList" style="display: none">
+          <div class="domains-header">🌐 All Domains</div>
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              id="domainSearch"
+              placeholder="Search domains or pages..."
+            />
+            <span class="search-icon">🔍</span>
+          </div>
+          <div id="domainsContent"></div>
+        </div>
+
+        <div
+          style="
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 4px;
+            border: 1px solid #ffeaa7;
+            font-size: 13px;
+            color: #856404;
+          "
+        >
+          <strong>Note:</strong> Statistics are updated in real-time as you browse. If you see
+          "Tabs: 1" but have many tabs open, try refreshing this page or reloading the extension.
+          This extension respects your privacy -
+          <a
+            href="privacy-policy.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #856404; text-decoration: underline"
+            >view our privacy policy</a
+          >.
+        </div>
+      </div>
+
+      <!-- Right Panel: Settings -->
+      <div class="right-panel">
+        <h1>DupeSweep Settings</h1>
+        <div class="version">Version 1.0.0</div>
+
+        <form id="settingsForm">
+          <div class="save-section">
+            <button type="submit" id="save">Save Settings</button>
+            <div
+              id="status"
+              class="status-message"
+              role="status"
+              aria-live="polite"
+              style="display: none"
+            ></div>
+          </div>
+
+          <fieldset>
+            <legend>🤖 Automation Settings</legend>
+
+            <div class="setting-group">
+              <div class="setting-header" data-setting="autoClose">
+                <input type="checkbox" id="autoClose" name="autoClose" />
+                <label for="autoClose">Auto-Sweep Duplicate Tabs</label>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="setting-content" id="autoCloseContent">
+                <div class="setting-description">
+                  Automatically close duplicate tabs as they are detected, without requiring manual
+                  intervention.
+                </div>
+                <div class="setting-details">
+                  <h4>How it works:</h4>
+                  <ul>
+                    <li>Monitors tabs in real-time for duplicates</li>
+                    <li>
+                      Waits 2 seconds after detecting duplicates before closing (prevents rapid
+                      firing)
+                    </li>
+                    <li>Preserves active and pinned tabs automatically</li>
+                    <li>Works with suspended tabs from extensions like Marvellous Suspender</li>
+                  </ul>
+                  <h4>Best for:</h4>
+                  <ul>
+                    <li>Users who frequently open duplicate tabs accidentally</li>
+                    <li>Heavy tab users who want automatic cleanup</li>
+                    <li>Reducing manual maintenance of tab organization</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="setting-group">
+              <div class="setting-header" data-setting="currentWindowOnly">
+                <input type="checkbox" id="currentWindowOnly" name="currentWindowOnly" />
+                <label for="currentWindowOnly">Current Window Only</label>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="setting-content" id="currentWindowOnlyContent">
+                <div class="setting-description">
+                  Limit duplicate detection and closing to tabs in the currently active browser
+                  window only.
+                </div>
+                <div class="setting-details">
+                  <h4>When enabled:</h4>
+                  <ul>
+                    <li>Only scans tabs in the window you're currently using</li>
+                    <li>Ignores tabs in other browser windows</li>
+                    <li>Badge count shows duplicates in current window only</li>
+                    <li>
+                      Manual closing (<span class="keyboard-shortcut">Alt+Shift+D</span>) affects
+                      current window only
+                    </li>
+                  </ul>
+                  <h4>Best for:</h4>
+                  <ul>
+                    <li>Users who work with multiple browser windows</li>
+                    <li>Keeping different projects/contexts separated</li>
+                    <li>Preventing accidental closure of tabs in other windows</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>🎯 Appearance</legend>
+            <div>
+              <label for="badgeColor">Duplicates badge color</label>
+              <select id="badgeColor" name="badgeColor" style="margin-left: 12px">
+                <option value="green">Green (default)</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+                <option value="gray">Gray</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>📋 Organization Settings</legend>
+
+            <div class="setting-group">
+              <div class="setting-header" data-setting="sortTabs">
+                <input type="checkbox" id="sortTabs" name="sortTabs" />
+                <label for="sortTabs">Sort Tabs by URL</label>
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="setting-content" id="sortTabsContent">
+                <div class="setting-description">
+                  <strong>Important:</strong> This setting sorts <em>ALL tabs</em> in each window
+                  alphabetically by URL, not just duplicates. It groups related tabs together and
+                  organizes your entire tab bar for better navigation.
+                </div>
+                <div class="setting-details">
+                  <h4>How it works:</h4>
+                  <ul>
+                    <li>
+                      <strong>Sorts ALL tabs</strong> alphabetically by their URL (not just
+                      duplicates)
+                    </li>
+                    <li>Groups tabs from the same domain together</li>
+                    <li>Maintains window separation (sorts within each window)</li>
+                    <li>Preserves pinned tab positions</li>
+                    <li>Happens every time you close duplicates</li>
+                  </ul>
+                  <h4>Before sorting:</h4>
+                  <ul>
+                    <li>Tab 1: stackoverflow.com/question1</li>
+                    <li>Tab 2: google.com/search</li>
+                    <li>Tab 3: github.com/project1</li>
+                    <li>Tab 4: google.com/docs</li>
+                    <li>Tab 5: github.com/project2</li>
+                  </ul>
+                  <h4>After sorting:</h4>
+                  <ul>
+                    <li>Tab 1: github.com/project1</li>
+                    <li>Tab 2: github.com/project2</li>
+                    <li>Tab 3: google.com/docs</li>
+                    <li>Tab 4: google.com/search</li>
+                    <li>Tab 5: stackoverflow.com/question1</li>
+                  </ul>
+                  <h4>Best for:</h4>
+                  <ul>
+                    <li>Users who prefer organized, grouped tabs</li>
+                    <li>Finding related tabs more easily</li>
+                    <li>Maintaining consistent tab organization</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>🛡️ Exceptions</legend>
+            <div class="setting-group">
+              <div class="setting-header" data-setting="exceptions">
+                <label for="exceptionsRules" style="flex: 0.8"
+                  >Do not close duplicates matching these rules</label
+                >
+                <span class="collapse-arrow">▼</span>
+              </div>
+              <div class="setting-content" id="exceptionsContent">
+                <div class="setting-description">
+                  One rule per line. Supports:
+                  <ul>
+                    <li>
+                      Match patterns with * wildcards (e.g., <code>*://*.example.com/*</code>)
+                    </li>
+                    <li>Regular expressions: <code>/regex/flags</code></li>
+                    <li>Title-based regex: <code>title/regex/flags</code></li>
+                  </ul>
+                </div>
+                <textarea
+                  id="exceptionsRules"
+                  rows="6"
+                  style="width: 100%; font-family: monospace"
+                  placeholder="*://*.example.com/*
+/example\.(net|org)/
+title/Example Domain/"
+                ></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>🌐 Localization</legend>
+            <div>
+              <label for="language">Language</label>
+              <select id="language" name="language" style="margin-left: 12px">
+                <option value="auto">Auto (browser default)</option>
+                <option value="en">English</option>
+                <option value="ru">Русский</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="zh_CN">简体中文</option>
+                <option value="hi">हिंदी</option>
+                <option value="bg">Български</option>
+                <option value="it">Italiano</option>
+              </select>
+              <div style="margin-top: 8px">
+                <a
+                  href="https://github.com/skippdot/DupeSweep/issues/new?labels=translation&amp;title=New%20language%20request"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Request a new language</a
+                >
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+        <div
+          style="
+            margin-top: 30px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+          "
+        >
+          <h4 style="margin: 0 0 10px 0; color: #1976d2">💡 Quick Tips</h4>
+          <ul style="margin: 0; color: #555; font-size: 14px">
+            <li>
+              Use <span class="keyboard-shortcut">Alt+Shift+D</span> (or
+              <span class="keyboard-shortcut">Option+Shift+D</span> on Mac) to manually close
+              duplicates
+            </li>
+            <li>The extension badge shows the number of duplicate tabs detected</li>
+            <li>Active and pinned tabs are always preserved when closing duplicates</li>
+            <li>Works with tab suspender extensions like Marvellous Suspender</li>
+            <li>All processing happens locally - no data is sent to external servers</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 style="margin: 0 0 5px 0; color: #495057">📋 Privacy & Source Code</h4>
+          <div class="footer-links">
+            <a
+              href="privacy-policy.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              <span class="footer-link-icon">🔒</span>
+              <span data-i18n="privacyPolicy">Privacy Policy</span>
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              <span class="footer-link-icon">🏪</span>
+              <span data-i18n="chromeWebStore">Chrome Web Store</span>
+            </a>
+            <a
+              href="https://github.com/skippdot/DupeSweep"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+            >
+              <span class="footer-link-icon">💻</span>
+              <span>GitHub</span>
+            </a>
+          </div>
+          <div class="footer-description">
+            This extension is open source and respects your privacy. No data is collected or
+            transmitted to external servers. All processing happens locally in your browser. View
+            our privacy policy and source code for complete transparency.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
