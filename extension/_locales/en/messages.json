@@ -4,7 +4,7 @@
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "Sweep away duplicate browser tabs instantly. Frees up memory, keeps your browser organized. Compatible with tab suspender extensions.",
+    "message": "Sweep away duplicate browser tabs instantly. Frees memory, keeps your browser organized. Compatible with tab suspender extensions.",
     "description": "Description of the extension"
   },
   "settingsTitle": {
@@ -12,7 +12,7 @@
     "description": "Title of the settings page"
   },
   "version": {
-    "message": "Version 1.0.0",
+    "message": "Version 3.0.0",
     "description": "Version number display"
   },
   "currentTabStatistics": {

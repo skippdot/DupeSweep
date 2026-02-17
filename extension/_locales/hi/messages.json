@@ -12,7 +12,7 @@
     "description": "Title of the settings page"
   },
   "version": {
-    "message": "संस्करण 1.0.0",
+    "message": "संस्करण 3.0.0",
     "description": "Version number display"
   },
   "currentTabStatistics": {

@@ -175,7 +175,7 @@ All GitHub repository links have been updated to Chrome Web Store links:
 ## 📦 **Package Information**
 
 ### **New Package Details**
-- **File**: `dupesweep-v1.0.0-i18n.zip`
+- **File**: `dupesweep-v3.0.0-i18n.zip`
 - **Size**: 55.6 KB (increased from 30.5 KB due to translations)
 - **Languages**: 7 supported languages
 - **Messages**: 70+ translatable strings per language

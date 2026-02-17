@@ -164,7 +164,7 @@
 
 ## 📝 **VERSION CHANGES**
 
-- **Version**: 1.0.0
+- **Version**: 3.0.0
 - **Manifest**: Added keyboard shortcuts
 - **Major Changes**: 
   - Fixed critical tab counting bug

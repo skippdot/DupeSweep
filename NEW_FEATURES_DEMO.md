@@ -1,4 +1,4 @@
-# New Features Demo - DupeSweep Extension v1.0.0
+# New Features Demo - DupeSweep Extension v3.0.0
 
 ## 🎨 **New Two-Panel Layout**
 

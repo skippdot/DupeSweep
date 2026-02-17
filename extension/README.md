@@ -91,4 +91,4 @@ This project is open source under the MIT License.
 
 ---
 
-**Version 1.0.0** - Fresh release with auto-sweep, tab suspender support, exceptions, and localization
+**Version 3.0.0** - Fresh release with auto-sweep, tab suspender support, exceptions, and localization

@@ -1,4 +1,4 @@
-# Testing Guide - DupeSweep Extension v1.0.0
+# Testing Guide - DupeSweep Extension v3.0.0
 
 ## 🧪 **Automated Testing**
 

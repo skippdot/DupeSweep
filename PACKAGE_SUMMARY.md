@@ -1,11 +1,11 @@
-# Chrome Web Store Package Summary - v1.0.0
+# Chrome Web Store Package Summary - v3.0.0
 
 ## Package Created Successfully
 
 ### File Information
-- **Package Name**: `dupesweep-v1.0.0.zip`
+- **Package Name**: `dupesweep-v3.0.0.zip`
 - **File Size**: 28.5 KB
-- **Location**: `/Users/skipp/Downloads/Close-Duplicate-Tab-Chrome-Web-Store/dupesweep-v1.0.0.zip`
+- **Location**: `/Users/skipp/Downloads/Close-Duplicate-Tab-Chrome-Web-Store/dupesweep-v3.0.0.zip`
 - **Created**: September 2, 2025
 
 ## ✅ **Package Validation**
@@ -54,7 +54,7 @@
 
 ### For Chrome Web Store Submission:
 1. **Go to**: [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/)
-2. **Upload**: `dupesweep-v1.0.0.zip`
+2. **Upload**: `dupesweep-v3.0.0.zip`
 3. **Add**: Store listing information (see CHROME_WEB_STORE_SUBMISSION.md)
 4. **Screenshots**: Create 5 screenshots showing key features
 5. **Submit**: For review
@@ -71,7 +71,7 @@
 - Works with existing tab management tools
 - Privacy-focused with no data collection
 
-## 📊 **Version 1.0.0 Highlights**
+## 📊 **Version 3.0.0 Highlights**
 
 ### Major New Features:
 - **Collapsible Settings**: Click arrows to see detailed explanations
@@ -122,7 +122,7 @@
 
 ## 🎉 **Package Ready**
 
-The `dupesweep-v1.0.0.zip` package is **ready for Chrome Web Store submission** with:
+The `dupesweep-v3.0.0.zip` package is **ready for Chrome Web Store submission** with:
 
 - ✅ **Professional Quality**: Zero errors, comprehensive testing
 - ✅ **Modern Standards**: Manifest V3, latest best practices
@@ -130,5 +130,5 @@ The `dupesweep-v1.0.0.zip` package is **ready for Chrome Web Store submission** 
 - ✅ **Privacy-Compliant**: No data collection, clear privacy policy
 - ✅ **Well-Documented**: Complete submission guide included
 
-**File Location**: `dupesweep-v1.0.0.zip` (28.5 KB)
+**File Location**: `dupesweep-v3.0.0.zip` (28.5 KB)
 **Ready for Upload**: Chrome Web Store Developer Dashboard

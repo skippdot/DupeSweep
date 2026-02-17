@@ -1,17 +1,17 @@
-# Chrome Web Store Submission Package - v1.0.0
+# Chrome Web Store Submission Package - v3.0.0
 
 ## Package Information
 
 ### File Details:
-- **Package Name**: `dupesweep-v1.0.0.zip`
+- **Package Name**: `dupesweep-v3.0.0.zip`
 - **Package Size**: 28.5 KB (well under Chrome Web Store 50MB limit)
-- **Version**: 1.0.0
+- **Version**: 3.0.0
 - **Manifest Version**: 3 (latest standard)
 
 ### Package Contents
 
 ```
-dupesweep-v1.0.0.zip (28.5 KB)
+dupesweep-v3.0.0.zip (28.5 KB)
 ├── manifest.json          (763 bytes)   - Extension configuration
 ├── close_tabs.js          (11.8 KB)     - Main extension logic
 ├── options.html           (18.2 KB)     - Settings page
@@ -51,7 +51,7 @@ dupesweep-v1.0.0.zip (28.5 KB)
 
 ### Basic Information:
 - **Name**: DupeSweep
-- **Version**: 1.0.0
+- **Version**: 3.0.0
 - **Category**: Productivity
 - **Language**: English
 
@@ -106,7 +106,7 @@ Perfect for power users with many tabs, researchers, developers, and anyone who 
 ### 1. Chrome Web Store Developer Dashboard
 1. Go to [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/)
 2. Click "Add new item"
-3. Upload `dupesweep-v1.0.0.zip`
+3. Upload `dupesweep-v3.0.0.zip`
 
 ### 2. Store Listing Information:
 - Upload the package zip file
@@ -146,7 +146,7 @@ Perfect for power users with many tabs, researchers, developers, and anyone who 
 
 ## 📈 **Version History for Store**
 
-### What's New in v1.0.0:
+### What's New in v3.0.0:
 - Major UI overhaul with two-panel layout
 - Collapsible settings with detailed descriptions
 - Enhanced domains with search and tab switching

@@ -1,4 +1,4 @@
-# Project Summary - DupeSweep Extension v1.0.0
+# Project Summary - DupeSweep Extension v3.0.0
 
 ## 🎯 Project Overview
 
@@ -90,7 +90,7 @@ DupeSweep/
 - ❌ Outdated JavaScript patterns
 - ❌ No automated testing
 
-### After (v1.0.0)
+### After (v3.0.0)
 - ✅ Handles 500+ tabs correctly
 - ✅ Full suspended tab compatibility
 - ✅ Comprehensive error handling
@@ -128,7 +128,7 @@ The `extension/` folder contains a production-ready Chrome extension that can be
 
 ## 🔮 Future Roadmap
 
-### Immediate (v1.0.0)
+### Immediate (v3.0.0)
 - User notifications when tabs are closed
 - Statistics dashboard for duplicate patterns
 - Whitelist/blacklist functionality
