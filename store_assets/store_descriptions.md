@@ -18,6 +18,7 @@ It's smart about it: your active tab and pinned tabs are always preserved. If yo
 ⚙️ SETTINGS & CUSTOMIZATION:
 • Auto-Sweep: Automatically remove duplicates as they appear
 • Current Window Only: Limit detection to your active window
+• Exceptions: Define rules to protect specific URLs or titles from being closed as duplicates (supports wildcards and regex)
 • Sort Tabs: Organize all tabs alphabetically by URL
 • Per-domain statistics with interactive search
 
@@ -55,6 +56,7 @@ Perfect for developers, researchers, power users, and anyone drowning in tabs. I
 ⚙️ НАСТРОЙКИ И ПЕРСОНАЛИЗИРАНЕ:
 • Автоматично почистване: Премахва дубликатите веднага при появата им
 • Само текущ прозорец: Ограничаване на откриването до активния прозорец
+• Изключения: Задайте правила за защита на конкретни URL или заглавия от затваряне като дубликати (поддържа wildcards и regex)
 • Сортиране на табове: Подреждане по URL по азбучен ред
 • Статистика по домейни с интерактивно търсене
 
@@ -86,6 +88,7 @@ Perfect for developers, researchers, power users, and anyone drowning in tabs. I
 ⚙️ 设置与自定义：
 • 自动清除：检测到重复标签页时自动移除
 • 仅当前窗口：将检测限制在活动窗口内
+• 例外规则：设置规则保护特定 URL 或标题不被作为重复标签关闭（支持通配符和正则表达式）
 • 标签排序：按 URL 字母顺序整理所有标签页
 • 按域名统计，支持交互式搜索
 
@@ -117,6 +120,7 @@ Il est intelligent : votre onglet actif et vos onglets épinglés sont toujours 
 ⚙️ PARAMÈTRES ET PERSONNALISATION :
 • Nettoyage automatique : Supprime les doublons dès leur apparition
 • Fenêtre active uniquement : Limite la détection à la fenêtre courante
+• Exceptions : Définissez des règles pour protéger certaines URL ou titres de la fermeture en tant que doublons (supporte les wildcards et les regex)
 • Tri des onglets : Organise tous les onglets par URL alphabétiquement
 • Statistiques par domaine avec recherche interactive
 
@@ -148,6 +152,7 @@ Parfait pour les développeurs, chercheurs, utilisateurs intensifs et tous ceux 
 ⚙️ सेटिंग्स और कस्टमाइज़ेशन:
 • ऑटो-स्वीप: डुप्लिकेट दिखते ही स्वचालित रूप से हटाएं
 • केवल वर्तमान विंडो: पहचान को सक्रिय विंडो तक सीमित करें
+• अपवाद: विशिष्ट URL या शीर्षकों को डुप्लिकेट के रूप में बंद होने से बचाने के लिए नियम बनाएं (वाइल्डकार्ड और regex समर्थित)
 • टैब सॉर्ट: सभी टैब को URL के अनुसार वर्णानुक्रम में व्यवस्थित करें
 • इंटरैक्टिव खोज के साथ डोमेन-वार आंकड़े
 
@@ -179,6 +184,7 @@ Lo fa in modo intelligente: il tab attivo e i tab fissati vengono sempre preserv
 ⚙️ IMPOSTAZIONI E PERSONALIZZAZIONE:
 • Pulizia automatica: Rimuove i duplicati appena vengono rilevati
 • Solo finestra corrente: Limita il rilevamento alla finestra attiva
+• Eccezioni: Definisci regole per proteggere URL o titoli specifici dalla chiusura come duplicati (supporta wildcards e regex)
 • Ordina tab: Organizza tutti i tab alfabeticamente per URL
 • Statistiche per dominio con ricerca interattiva
 
@@ -210,6 +216,7 @@ Perfetto per sviluppatori, ricercatori, utenti avanzati e chiunque desideri un b
 ⚙️ НАСТРОЙКИ И КАСТОМИЗАЦИЯ:
 • Автоочистка: Автоматическое удаление дубликатов при появлении
 • Только текущее окно: Ограничение поиска активным окном
+• Исключения: Задайте правила для защиты определённых URL или заголовков от закрытия как дубликатов (поддержка wildcards и regex)
 • Сортировка вкладок: Упорядочивание всех вкладок по URL
 • Статистика по доменам с интерактивным поиском
 
@@ -241,6 +248,7 @@ Lo hace de forma inteligente: tu pestaña activa y las pestañas fijadas siempre
 ⚙️ AJUSTES Y PERSONALIZACIÓN:
 • Limpieza automática: Elimina duplicados en cuanto aparecen
 • Solo ventana actual: Limita la detección a la ventana activa
+• Excepciones: Define reglas para proteger URLs o títulos específicos de ser cerrados como duplicados (soporta wildcards y regex)
 • Ordenar pestañas: Organiza todas las pestañas alfabéticamente por URL
 • Estadísticas por dominio con búsqueda interactiva
 
