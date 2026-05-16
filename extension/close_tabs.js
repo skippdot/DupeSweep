@@ -435,6 +435,15 @@ function computeCountsFromTabs(tabs) {
         isCloseableUrl(url) && !isExcepted(url, titles[url]) ? Math.max(0, count - 1) : 0
     }));
 
+  // Window stats: count tabs per window
+  const windowCounts = {};
+  tabs.forEach(t => {
+    windowCounts[t.windowId] = (windowCounts[t.windowId] || 0) + 1;
+  });
+  const windowStats = Object.entries(windowCounts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([windowId, count]) => ({ windowId: Number(windowId), count }));
+
   return {
     totalTabs,
     uniqueUrls,
@@ -443,7 +452,8 @@ function computeCountsFromTabs(tabs) {
     urlCounts,
     titles,
     duplicatesList,
-    topDomains
+    topDomains,
+    windowStats
   };
 }
 
@@ -560,6 +570,13 @@ if (typeof globalThis !== 'undefined') {
     getDomain,
     compileExceptions,
     isExcepted,
+    extractRealUrl,
+    mapBadgeColor,
+    getTopDomainsTitle,
+    hasTitleExceptions,
+    _urlMatchVariants,
+    closeDuplicateTabs,
+    focusDuplicateByUrl,
     refreshBadgeForTest: () => {
       stateChanged = true;
       refreshBadge();
@@ -699,6 +716,7 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         uniqueUrls: counts.uniqueUrls,
         topDomains: counts.topDomains,
         duplicatesList: counts.duplicatesList,
+        windowStats: counts.windowStats,
         settings: { autoClose, currentWindowOnly, sortTabs }
       });
 

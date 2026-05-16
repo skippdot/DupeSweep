@@ -56,6 +56,27 @@ function renderDomains(domains) {
   });
 }
 
+function renderWindowStats(windowStats) {
+  const section = document.getElementById('windowsSection');
+  const list = document.getElementById('windowStats');
+  list.innerHTML = '';
+  if (!windowStats || windowStats.length <= 1) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  if (section) section.style.display = 'block';
+  windowStats.forEach(({ windowId, count }, i) => {
+    const row = document.createElement('div');
+    row.className = 'domain';
+    row.innerHTML = `<span>Window ${i + 1}</span><span class="count">${count} tabs</span>`;
+    row.style.cursor = 'pointer';
+    row.addEventListener('click', () => {
+      chrome.windows.update(windowId, { focused: true });
+    });
+    list.appendChild(row);
+  });
+}
+
 function renderDuplicates(dups) {
   const list = document.getElementById('dupList');
   const section = document.getElementById('dupSection');
@@ -125,6 +146,7 @@ function refresh() {
 
     renderCounts(resp.totalTabs, dupsToClose);
     renderDuplicates(dupList);
+    renderWindowStats(resp.windowStats || []);
     renderDomains(resp.topDomains || []);
     setAutoCloseToggle(resp.settings?.autoClose);
 
